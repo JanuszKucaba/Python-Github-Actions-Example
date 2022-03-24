@@ -48,4 +48,4 @@ jobs:
         HEROKU_APP_NAME: $ {{ secrets.HEROKU_APP_NAME }}
       if: github.ref == 'refs/heads/master' && job.status == 'success'
       run: |
-        git heroku push -a ${{ secrets.HEROKU_APP_NAME }} web
+        git push heroku -a ${{ secrets.HEROKU_APP_NAME }} web
