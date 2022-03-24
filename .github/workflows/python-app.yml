@@ -39,14 +39,14 @@ jobs:
         pytest
     - name: Login to Heroku
       env:
-        HEROKU_API_TOKEN: $ {{ secrets.HEROKU_API_TOKEN }}
+        HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
       run: |
         heroku login
     - name: Build and Push to Heroku
       env:
-        HEROKU_API_TOKEN: $ {{ secrets.HEROKU_API_TOKEN }}
-        HEROKU_APP_NAME: $ {{ secrets.HEROKU_APP_NAME }}
+        HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
+        HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
       if: github.ref == 'refs/heads/master' && job.status == 'success'
       run: |
-        heroku git:remote -a $ {{ secrets.HEROKU_APP_NAME}}
-        heroku push heroku main
+        heroku git:remote -a ${{ secrets.HEROKU_APP_NAME }}
+        git push heroku main
